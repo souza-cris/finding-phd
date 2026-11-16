@@ -4,3 +4,4 @@ node_modules/
 data/master_data.json
 data/*.xlsx
 .DS_Store
+dist/

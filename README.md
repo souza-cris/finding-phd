@@ -53,3 +53,7 @@ npm test
 ## Campus photo
 
 The left strip shows `public/img/campus.jpg` (any campus photo you have the right to use). Without it, the strip is solid green. Put the photo credit in the `photo-credit` element in `public/index.html`.
+
+## Static version (published page)
+
+`npm run build:static` writes a copy of the app to `dist/` that needs no server or database: the data is bundled as `data.json`, the filters run in the browser, and the Excel file is built in the browser with ExcelJS. This is the version published as a claude.ai artifact, where the Download Excel button uses the artifact downloads capability (the viewer confirms each save). It reads `data/master_data.json` by default, or a file you pass: `node scripts/build-static.js path/to/data.json`. `dist/` is git-ignored because it contains the real search results.

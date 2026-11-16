@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "seed": "node scripts/seed.js",
-    "test": "node scripts/test-filter.js"
+    "test": "node scripts/test-filter.js",
+    "build:static": "node scripts/build-static.js"
   },
   "engines": {
     "node": ">=18"
