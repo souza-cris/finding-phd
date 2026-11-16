@@ -1,0 +1,6 @@
+node_modules/
+.env
+# Real search results stay out of git (the repo is public). Load them into MongoDB with npm run seed.
+data/master_data.json
+data/*.xlsx
+.DS_Store

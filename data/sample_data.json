@@ -1,0 +1,239 @@
+{
+ "criteria": {
+  "Country": "USA",
+  "Regions": [
+   "West"
+  ],
+  "States": [
+   "Example State"
+  ],
+  "City": "Any city is fine",
+  "Funding": "Must have",
+  "University Classification": [
+   "R1"
+  ],
+  "Ranking": "All",
+  "Fields": [
+   "Example field"
+  ],
+  "Research Areas": "Example interests",
+  "Run date": "2026-11-16",
+  "Batch": "Example only"
+ },
+ "notes": [
+  "FICTIONAL SAMPLE DATA for trying the app. Real data lives in MongoDB."
+ ],
+ "programs": [
+  {
+   "region": "West",
+   "state": "Example State",
+   "city": "Example City",
+   "university": "Example University A (fictional)",
+   "ranking": "=45",
+   "rank_num": 45,
+   "research_classification": "R1",
+   "field": "Example field",
+   "phd_program": "PhD in Example Studies",
+   "phd_length": "5 years",
+   "funding": "Y",
+   "funding_amount": "$30,000 per year (2026-27)",
+   "funding_description": "Graduate assistantship, 5 years, tuition waiver and health insurance",
+   "link": "https://www.example.edu/phd",
+   "coordinator_name": "Jane Doe",
+   "coordinator_email": "jdoe@example.edu",
+   "gre": "Not required",
+   "toefl": "iBT 90 or IELTS 7.0",
+   "toefl_min": 90,
+   "gpa": "3.0 minimum",
+   "gpa_min": 3.0,
+   "other_requirements": "Statement of purpose, 3 letters, CV, writing sample",
+   "application_deadline": "2026-12-15",
+   "deadline_note": "Priority deadline for funding",
+   "professors": [
+    {
+     "name": "A. Example",
+     "title": "Professor",
+     "email": "aexample@example.edu",
+     "research_areas": "Example topic one; example topic two",
+     "website": "https://www.example.edu/people/aexample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/aexample"
+    },
+    {
+     "name": "B. Sample",
+     "title": "Associate Professor",
+     "email": "bsample@example.edu",
+     "research_areas": "Example topic three",
+     "website": "https://www.example.edu/people/bsample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/bsample"
+    }
+   ],
+   "sources": [
+    "https://www.example.edu/phd",
+    "https://www.example.edu/phd/admissions"
+   ],
+   "verified_on": "2026-11-16"
+  },
+  {
+   "region": "South Central",
+   "state": "Sample State",
+   "city": "Example City",
+   "university": "Example University B (fictional)",
+   "ranking": "601-650",
+   "rank_num": 601,
+   "research_classification": "R1",
+   "field": "Example field",
+   "phd_program": "PhD in Example Studies",
+   "phd_length": "5 years",
+   "funding": "Not stated",
+   "funding_amount": "Not stated",
+   "funding_description": "Graduate assistantship, 5 years, tuition waiver and health insurance",
+   "link": "https://www.example.edu/phd",
+   "coordinator_name": "Jane Doe",
+   "coordinator_email": "jdoe@example.edu",
+   "gre": "Required",
+   "toefl": "iBT 90 or IELTS 7.0",
+   "toefl_min": 100,
+   "gpa": "3.0 minimum",
+   "gpa_min": 3.3,
+   "other_requirements": "Statement of purpose, 3 letters, CV, writing sample",
+   "application_deadline": "",
+   "deadline_note": "Priority deadline for funding",
+   "professors": [
+    {
+     "name": "A. Example",
+     "title": "Professor",
+     "email": "aexample@example.edu",
+     "research_areas": "Example topic one; example topic two",
+     "website": "https://www.example.edu/people/aexample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/aexample"
+    },
+    {
+     "name": "B. Sample",
+     "title": "Associate Professor",
+     "email": "bsample@example.edu",
+     "research_areas": "Example topic three",
+     "website": "https://www.example.edu/people/bsample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/bsample"
+    }
+   ],
+   "sources": [
+    "https://www.example.edu/phd",
+    "https://www.example.edu/phd/admissions"
+   ],
+   "verified_on": "2026-11-16"
+  },
+  {
+   "region": "Northeast",
+   "state": "Demo State",
+   "city": "Example City",
+   "university": "Example University C (fictional)",
+   "ranking": "=88",
+   "rank_num": 88,
+   "research_classification": "R1",
+   "field": "Example field",
+   "phd_program": "PhD in Example Studies",
+   "phd_length": "5 years",
+   "funding": "Y",
+   "funding_amount": "$30,000 per year (2026-27)",
+   "funding_description": "Graduate assistantship, 5 years, tuition waiver and health insurance",
+   "link": "https://www.example.edu/phd",
+   "coordinator_name": "Jane Doe",
+   "coordinator_email": "jdoe@example.edu",
+   "gre": "Optional",
+   "toefl": "iBT 90 or IELTS 7.0",
+   "toefl_min": null,
+   "gpa": "3.0 minimum",
+   "gpa_min": null,
+   "other_requirements": "Statement of purpose, 3 letters, CV, writing sample",
+   "application_deadline": "2027-01-10",
+   "deadline_note": "Priority deadline for funding",
+   "professors": [
+    {
+     "name": "A. Example",
+     "title": "Professor",
+     "email": "aexample@example.edu",
+     "research_areas": "Example topic one; example topic two",
+     "website": "https://www.example.edu/people/aexample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/aexample"
+    },
+    {
+     "name": "B. Sample",
+     "title": "Associate Professor",
+     "email": "bsample@example.edu",
+     "research_areas": "Example topic three",
+     "website": "https://www.example.edu/people/bsample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/bsample"
+    }
+   ],
+   "sources": [
+    "https://www.example.edu/phd",
+    "https://www.example.edu/phd/admissions"
+   ],
+   "verified_on": "2026-11-16"
+  },
+  {
+   "region": "Midwest",
+   "state": "Test State",
+   "city": "Example City",
+   "university": "Example University D (fictional)",
+   "ranking": "Not ranked",
+   "rank_num": null,
+   "research_classification": "R1",
+   "field": "Example field",
+   "phd_program": "PhD in Example Studies",
+   "phd_length": "5 years",
+   "funding": "N",
+   "funding_amount": "Not stated",
+   "funding_description": "Graduate assistantship, 5 years, tuition waiver and health insurance",
+   "link": "https://www.example.edu/phd",
+   "coordinator_name": "Jane Doe",
+   "coordinator_email": "jdoe@example.edu",
+   "gre": "Not stated",
+   "toefl": "iBT 90 or IELTS 7.0",
+   "toefl_min": 80,
+   "gpa": "3.0 minimum",
+   "gpa_min": 3.5,
+   "other_requirements": "Statement of purpose, 3 letters, CV, writing sample",
+   "application_deadline": "2027-02-01",
+   "deadline_note": "Priority deadline for funding",
+   "professors": [
+    {
+     "name": "A. Example",
+     "title": "Professor",
+     "email": "aexample@example.edu",
+     "research_areas": "Example topic one; example topic two",
+     "website": "https://www.example.edu/people/aexample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/aexample"
+    },
+    {
+     "name": "B. Sample",
+     "title": "Associate Professor",
+     "email": "bsample@example.edu",
+     "research_areas": "Example topic three",
+     "website": "https://www.example.edu/people/bsample",
+     "scholar": "",
+     "source": "https://www.example.edu/people/bsample"
+    }
+   ],
+   "sources": [
+    "https://www.example.edu/phd",
+    "https://www.example.edu/phd/admissions"
+   ],
+   "verified_on": "2026-11-16"
+  }
+ ],
+ "not_found": [
+  {
+   "university": "Another Example University (fictional)",
+   "reason": "No PhD in the chosen field on its official site"
+  }
+ ],
+ "changes": []
+}
