@@ -48,3 +48,8 @@ npm test
 
 * Always confirm deadlines and stipends on the official program page before applying.
 * Never commit `.env` or real data while the repository is public.
+| `GET /api/export` | Same filters as `/api/programs`; returns an Excel file (Programs, Professors, About this export) with no formulas |
+
+## Campus photo
+
+The left strip shows `public/img/campus.jpg` (any campus photo you have the right to use). Without it, the strip is solid green. Put the photo credit in the `photo-credit` element in `public/index.html`.

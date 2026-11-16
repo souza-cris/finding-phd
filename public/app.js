@@ -32,7 +32,9 @@ function params() {
 }
 
 async function load() {
-  const r = await fetch('/api/programs?' + params()).then((x) => x.json());
+  const q = params();
+  document.getElementById('export').href = '/api/export' + (q ? '?' + q : '');
+  const r = await fetch('/api/programs?' + q).then((x) => x.json());
   const s = r.summary;
   document.getElementById('kpis').innerHTML = [
     ['Programs matching', s.programs], ['Universities', s.universities], ['Funded (Y)', s.funded],
@@ -40,7 +42,7 @@ async function load() {
   ].map(([l, v]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${l}</div></div>`).join('');
   const max = Math.max(1, ...s.byRegion.map((b) => b.programs));
   document.getElementById('chart').innerHTML = '<h2>Matching programs by region</h2>' + s.byRegion.map((b) =>
-    `<div class="bar-row"><span>${b.region}</span><div class="bar"><span style="width:${(b.programs / max) * 100}%"></span><span class="f" style="width:${(b.funded / max) * 100}%"></span></div><span>${b.programs} (${b.funded} funded)</span></div>`
+    `<div class="bar-row"><span>${b.region}</span><div class="bar"><span style="width:${(b.programs / max) * 100}%"></span>${b.funded ? `<span class="f" style="width:${(b.funded / max) * 100}%"></span>` : ''}</div><span>${b.programs} (${b.funded} funded)</span></div>`
   ).join('');
   document.getElementById('count').textContent = `(${r.programs.length})`;
   tbody.innerHTML = r.programs.map((p, i) => `
