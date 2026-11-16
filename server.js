@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const { loadData } = require('./lib/data');
 const { filterPrograms, summarize, options } = require('./lib/filter');
+const { buildWorkbook } = require('./lib/export');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +25,18 @@ app.get('/api/programs', async (req, res, next) => {
     const d = await loadData();
     const list = filterPrograms(d.programs, req.query);
     res.json({ summary: summarize(list), programs: list });
+  } catch (e) { next(e); }
+});
+
+// Excel download of the programs that match the current filters (same query params as /api/programs).
+app.get('/api/export', async (req, res, next) => {
+  try {
+    const d = await loadData();
+    const list = filterPrograms(d.programs, req.query);
+    const buf = await buildWorkbook(list, req.query, d);
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader('Content-Disposition', `attachment; filename="PhD_Programs_${new Date().toISOString().slice(0, 10)}.xlsx"`);
+    res.send(Buffer.from(buf));
   } catch (e) { next(e); }
 });
 

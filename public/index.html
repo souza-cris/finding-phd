@@ -4,9 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Finding PhD: Program Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="photo-credit" id="photo-credit">Hewson Hall, The University of Alabama</div>
   <header class="top">
     <div>
       <h1>Finding PhD</h1>
@@ -50,7 +53,8 @@
     <section class="content">
       <div class="kpis" id="kpis"></div>
       <div class="chart" id="chart" aria-label="Matching programs by region"></div>
-      <h2 class="list-title">Matching programs <span id="count"></span></h2>
+      <div class="list-head"><h2 class="list-title">Matching programs <span id="count"></span></h2>
+        <a id="export" class="btn" href="/api/export" download>Download Excel</a></div>
       <div class="table-wrap">
         <table id="results">
           <thead>
