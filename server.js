@@ -6,6 +6,27 @@ const { filterPrograms, summarize, options } = require('./lib/filter');
 const { buildWorkbook } = require('./lib/export');
 
 const app = express();
+
+// Password protection: active only when APP_USER and APP_PASSWORD are set (for example on Render).
+const crypto = require('crypto');
+function same(a, b) {
+  const x = Buffer.from(String(a));
+  const y = Buffer.from(String(b));
+  return x.length === y.length && crypto.timingSafeEqual(x, y);
+}
+if (process.env.APP_USER && process.env.APP_PASSWORD) {
+  app.use((req, res, next) => {
+    const [scheme, encoded] = (req.headers.authorization || '').split(' ');
+    if (scheme === 'Basic' && encoded) {
+      const decoded = Buffer.from(encoded, 'base64').toString();
+      const i = decoded.indexOf(':');
+      if (i > -1 && same(decoded.slice(0, i), process.env.APP_USER) && same(decoded.slice(i + 1), process.env.APP_PASSWORD)) return next();
+    }
+    res.set('WWW-Authenticate', 'Basic realm="Finding PhD", charset="UTF-8"');
+    res.status(401).send('Login required');
+  });
+}
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
