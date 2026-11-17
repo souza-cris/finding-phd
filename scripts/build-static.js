@@ -1,7 +1,8 @@
 // Builds a static copy of the app in dist/ (no server, no MongoDB): the data is bundled as data.json,
 // filters run in the browser, and the Excel file is built in the browser with ExcelJS from cdnjs.
 // This is the version published as a claude.ai artifact. Downloads there go through the artifact
-// "downloads" capability; where it is missing the Download Excel button is hidden.
+// "downloads" capability (hidden where it is missing); on a normal website such as GitHub Pages the
+// browser saves the file directly.
 //
 // Usage: node scripts/build-static.js [data file]   (default: data/master_data.json)
 // dist/ is git-ignored because it contains the real search results.
@@ -59,18 +60,26 @@ const exportMsg = document.getElementById('exportMsg');
 let downloads = null;
 (async () => {
   try { downloads = window.claude ? await window.claude.use('downloads') : null; } catch (e) { downloads = null; }
-  if (!downloads) { exportBtn.hidden = true; exportMsg.textContent = 'Excel download is not available in this view.'; }
+  // On claude.ai the page needs the downloads capability; on a normal site (e.g. GitHub Pages) the browser saves the file.
+  if (!downloads && window.claude) { exportBtn.hidden = true; exportMsg.textContent = 'Excel download is not available in this view.'; }
 })();
 exportBtn.onclick = async (ev) => {
   ev.preventDefault();
-  if (!downloads) return;
+  if (!downloads && window.claude) return;
   exportBtn.disabled = true; exportMsg.textContent = 'Preparing file...';
   try {
     const d = await getData();
     const q = Object.fromEntries(new URLSearchParams(lastQuery));
     const list = filterPrograms(d.programs, q);
     const buf = await buildWorkbook(list, q, d);
-    await downloads.save({ filename: \`PhD_Programs_\${new Date().toISOString().slice(0, 10)}.xlsx\`, data: new Blob([buf]) });
+    const filename = \`PhD_Programs_\${new Date().toISOString().slice(0, 10)}.xlsx\`;
+    const blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    if (downloads) await downloads.save({ filename, data: blob });
+    else {
+      const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: filename });
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
     exportMsg.textContent = \`Saved \${list.length} programs.\`;
   } catch (e) {
     exportMsg.textContent = e && e.code === 'declined' ? 'Download canceled.' : 'Could not save the file' + (e && e.message ? ': ' + e.message : '.');
