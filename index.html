@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finding PhD: Program Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="photo-credit" id="photo-credit">Amelia Gayle Gorgas Library, The University of Alabama</div>
+  <header class="top">
+    <div>
+      <h1>Finding PhD</h1>
+      <p class="sub">US PhD programs from official university websites. Pick filters to narrow the list.</p>
+    </div>
+    <button id="howBtn" class="ghost" type="button">How to use</button>
+  </header>
+
+  <section id="how" class="how" hidden>
+    <h2>How to use</h2>
+    <ol>
+      <li>Pick values in the filters on the left. "All" means no filter. The list, summary and chart update right away.</li>
+      <li>Deadline on or after: hides programs with an earlier deadline. Programs with no known deadline stay.</li>
+      <li>My TOEFL and My GPA: type your own score. Programs that ask for more disappear; programs with no stated minimum stay.</li>
+      <li>Click a program row to see funding details, requirements, professors and the official pages used.</li>
+    </ol>
+    <p><b>Not stated</b> means the official website does not say; it was left blank instead of guessed. <b>Funding Y</b> means the website says PhD students receive assistantships or fellowships; "competitive" in the details means not every student gets one. <b>(borderline fit)</b> marks programs related to, but not exactly in, the field. Always confirm deadlines and stipends on the official page before applying.</p>
+  </section>
+
+  <main class="layout">
+    <aside class="filters" aria-label="Filters">
+      <h2>Filters</h2>
+      <form id="filters">
+        <label>Region<select name="region"></select></label>
+        <label>State<select name="state"></select></label>
+        <label>City<select name="city"></select></label>
+        <label>University<select name="university"></select></label>
+        <label>Ranking (QS World)<select name="ranking"></select></label>
+        <label>Research classification<select name="classification"></select></label>
+        <label>Field<select name="field"></select></label>
+        <label>PhD program<select name="program"></select></label>
+        <label>Funding (Y, N)<select name="funding"></select></label>
+        <label>Deadline on or after<input type="date" name="deadlineAfter"></label>
+        <label>GRE<select name="gre"></select></label>
+        <label>My TOEFL score<input type="number" name="toefl" min="0" max="120" placeholder="e.g. 100"></label>
+        <label>My GPA<input type="number" name="gpa" min="0" max="4" step="0.01" placeholder="e.g. 3.5"></label>
+        <button type="reset" class="ghost">Clear filters</button>
+      </form>
+    </aside>
+
+    <section class="content">
+      <div class="kpis" id="kpis"></div>
+      <div class="chart" id="chart" aria-label="Matching programs by region"></div>
+      <div class="list-head"><h2 class="list-title">Matching programs <span id="count"></span></h2>
+        <span><span id="exportMsg" class="export-msg"></span> <button id="export" class="btn" type="button">Download Excel</button></span></div>
+      <div class="table-wrap">
+        <table id="results">
+          <thead>
+            <tr>
+              <th>University</th><th>State</th><th>Rank</th><th>Class.</th><th>Field</th>
+              <th>PhD program</th><th>Funding</th><th>Stipend</th><th>GRE</th><th>Deadline</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <details class="excluded">
+        <summary>Universities checked but left out</summary>
+        <ul id="excluded"></ul>
+      </details>
+      <p class="foot" id="foot"></p>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
