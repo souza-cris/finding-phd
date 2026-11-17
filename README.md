@@ -57,3 +57,16 @@ The left strip shows `public/img/campus.jpg` (any campus photo you have the righ
 ## Static version (published page)
 
 `npm run build:static` writes a copy of the app to `dist/` that needs no server or database: the data is bundled as `data.json`, the filters run in the browser, and the Excel file is built in the browser with ExcelJS. This is the version published as a claude.ai artifact, where the Download Excel button uses the artifact downloads capability (the viewer confirms each save). It reads `data/master_data.json` by default, or a file you pass: `node scripts/build-static.js path/to/data.json`. `dist/` is git-ignored because it contains the real search results.
+
+## GitHub Pages (public site)
+
+The static build is also published at https://souza-cris.github.io/finding-phd/ from the `gh-pages` branch, which holds only the contents of `dist/`. **This site is public and includes the real search data.** On Pages, Download Excel saves the file directly in the browser.
+
+To update it after a new search (export from MongoDB or use your local `data/master_data.json`):
+
+```bash
+npm run build:static
+touch dist/.nojekyll
+cd dist && git init -q -b gh-pages && git add -A && git commit -qm "Update site" \
+  && git push -f https://github.com/souza-cris/finding-phd.git gh-pages && rm -rf .git
+```
